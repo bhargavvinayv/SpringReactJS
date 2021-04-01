@@ -14,4 +14,6 @@ public interface Repository extends MongoRepository<Product, String> {
 
 	void save(Optional<Product> product);
 
+	Product findByTitle(String string);
+
 }

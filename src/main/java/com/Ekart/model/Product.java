@@ -13,6 +13,7 @@ public class Product {
 	private String title;
 	private int price;
 	private int quantity;
+	private String image;
 
 	public String getPid() {
 		return pid;
@@ -46,8 +47,17 @@ public class Product {
 		this.quantity = quantity;
 	}
 
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@Override
 	public String toString() {
-		return "Product [title=" + title + ", price=" + price + ", quantity=" + quantity + "]";
+		return "Product [pid=" + pid + ", title=" + title + ", price=" + price + ", quantity=" + quantity + ", image="
+				+ image + "]";
 	}
 }

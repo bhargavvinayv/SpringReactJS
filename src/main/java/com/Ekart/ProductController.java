@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.Ekart.dao.Repository;
 import com.Ekart.model.Product;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 public class ProductController {
 
@@ -44,18 +44,20 @@ public class ProductController {
 		return repo.findById(id);
 	}
 
-	@PutMapping(path = "setProducts/{title}")
-	public List<Product> setproducts(@RequestBody Product product) {
+	@PutMapping(path = "setProducts")
+	public void setProduct(@RequestBody Product product) {
 
-		repo.save(product);
+		Product p1 = repo.findByTitle(product.getTitle());
+		if (p1 == null) {
+			repo.save(product);
+		}
 
-		return repo.findAll();
+		System.out.println(product + "" + p1);
 
 	}
 
 	@PutMapping("updateProduct")
 	public List<Product> updateProduct(@RequestBody Product product) {
-
 		repo.save(product);
 
 		return repo.findAll();
